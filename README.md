@@ -20,15 +20,8 @@ Refiner
 Output to User
 ```
 
-## CLI knobs (current)
-- Story request: asked interactively at runtime
-- `--character-name` name the main character
-- `--length` length guidance (e.g., `250 words`, `short`)
-- `--setting` story setting (e.g., `underwater city`)
-- `--mood` tone (e.g., `calm and cozy`)
-- `--openai-api-key` override `OPENAI_API_KEY`
-
+## Usage
 Example:
 ```
-python main.py --character-name Luna --setting "treehouse village" --mood "warm and encouraging" --length "300 words" --openai-api-key sk-...
+python main.py --openai-api-key ...
 ```

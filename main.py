@@ -11,6 +11,10 @@ the prompt then that would be flagged as inappropriate. While the use of a datab
 more simplistic than using another LLM to check for inappropriate keywords, I think it would be more reliable
 because of this simplicity.
 
+Currently the judge always seems to provide the same score and the scoring can be quite subjective.
+I think a useful feature is some way to calibrate the judge to the preferences of the user. Maybe this
+could be implemented by having the user review some generated stories and then providing some feedback,
+then this would use as further input to the judge model to provide more context.
 """
 
 def build_story_prompt(
@@ -183,7 +187,7 @@ def main():
         "-d",
         "--debug",
         action="store_true",
-        help="Suppress intermediate output; only print the final refined story.",
+        help="Show intermediate output and prompts to the model.",
     )
     args = parser.parse_args()
     debug_mode = args.debug
@@ -218,7 +222,7 @@ def main():
         request_context,
         story_prompt,
         api_key=args.openai_api_key,
-        debug=False if debug_mode else debug_mode,
+        debug=True if debug_mode else debug_mode,
     )
     if debug_mode:
         print("\n--- Judge Assessment ---")
